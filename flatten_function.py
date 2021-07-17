@@ -7,17 +7,19 @@ non-scalar verilerden de oluşabilir.
 input : [[1, 'a', ['cat'], 2], [[[3]], 'dog'], 4, 5]
 output: [ 1, 'a', 'cat', 2, 3, 'dog', 4, 5 ]
 """""
-sample_list = [ [1, 'a', ['cat'], 2], [ [[3]], 'dog'], 4, 5] 
+sample_list = [ [1, 'a', ['cat'], 2], [ [[3]], 'dog'], 4, 5, {"bir":1, "iki":2 } ] 
 
 def flatten_list(L):
-    def _flatten_list(L, result):    
-        if type(L) is not list and type(L) is not tuple:
-            result.append(L)
-        else:
-            for e in L:
-                result += flatten_list(e)
-        return result
-    return _flatten_list(L, [])       
+    result = []    
+    if type(L) == list or type(L) == tuple: 
+        for e in L:
+            result += flatten_list(e)     
+    elif type(L) == dict:
+        for i, j in L.items():
+            result += (flatten_list(i) + flatten_list(j))
+    else:
+        result.append(L)
+    return result       
 
 print(f"Flattened Sample List: {flatten_list( sample_list )} ") 
-# output ----------> [ 1, 'a', 'cat', 2, 3, 'dog', 4, 5]
+# output ----------> [ 1, 'a', 'cat', 2, 3, 'dog', 4, 5, 'bir', 1, 'iki', 2]

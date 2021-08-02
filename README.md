@@ -1,5 +1,5 @@
 # Python_
-Bu depo alanında aşağıda yer alan iki proje gerçekleştirilmiştir.
+Bu depo alanında Patika Python Temel eğitimi sonunda yapılması istenen iki proje gerçekleştirilmiştir.
 
 1. **Bir listeyi düzleştiren (flatten) fonksiyon yazın.** 
 
